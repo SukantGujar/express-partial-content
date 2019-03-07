@@ -1,0 +1,15 @@
+{
+  "name": "node-partial-stream",
+  "version": "0.1.0",
+  "main": "dist/index.js",
+  "repository": "ssh://git@github.com-sukantgujar/SukantGujar/node-partial-stream",
+  "author": "sukantgujar <sukantgujar@yahoo.com>",
+  "license": "MIT",
+  "scripts": {
+    "build-watch": "npx tsc -w"
+  },
+  "devDependencies": {
+    "@types/node": "^11.10.5",
+    "typescript": "^3.3.3333"
+  }
+}
