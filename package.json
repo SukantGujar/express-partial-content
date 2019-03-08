@@ -6,10 +6,13 @@
   "author": "sukantgujar <sukantgujar@yahoo.com>",
   "license": "MIT",
   "scripts": {
-    "build-watch": "npx tsc -w"
+    "build:watch": "npx tsc -w",
+    "build:prod": "rimraf ./dist && cross-env NODE_ENV=production tsc -b"
   },
   "devDependencies": {
     "@types/express": "^4.16.1",
+    "cross-env": "^5.2.0",
+    "rimraf": "^2.6.3",
     "typescript": "^3.3.3333"
   },
   "peerDependencies": {
