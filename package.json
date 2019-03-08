@@ -9,7 +9,10 @@
     "build-watch": "npx tsc -w"
   },
   "devDependencies": {
-    "@types/node": "^11.10.5",
+    "@types/express": "^4.16.1",
     "typescript": "^3.3.3333"
+  },
+  "peerDependencies": {
+    "express": "^4.16.4"
   }
 }
