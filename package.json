@@ -1,8 +1,8 @@
 {
-  "name": "node-partial-stream",
+  "name": "express-partial-content",
   "version": "0.1.0",
   "main": "dist/index.js",
-  "repository": "ssh://git@github.com-sukantgujar/SukantGujar/node-partial-stream",
+  "repository": "ssh://git@github.com-sukantgujar/SukantGujar/express-partial-content",
   "author": "sukantgujar <sukantgujar@yahoo.com>",
   "license": "MIT",
   "scripts": {
@@ -19,7 +19,5 @@
   "peerDependencies": {
     "express": "^4.16.4"
   },
-  "dependencies": {
-    "express": "^4.16.4"
-  }
+  "dependencies": {}
 }

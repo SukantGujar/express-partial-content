@@ -1,40 +1,13 @@
-import express, { Request } from "express";
+import express from "express";
 import { promisify } from "util";
 import fs from "fs";
-import { Range, createPartialStreamHandler, ContentDoesNotExistError, ContentProvider } from "../../index";
+import { createPartialStreamHandler } from "../../index";
+import { fileContentProvider } from "./fileContentProvider";
 
-const statAsync = promisify(fs.stat);
-const existsAsync = promisify(fs.exists);
+export const statAsync = promisify(fs.stat);
+export const existsAsync = promisify(fs.exists);
 
-const fileContentProvider: ContentProvider = async (req: Request) => {
-  const fileName = req.params.name;
-  const file = `${__dirname}/files/${fileName}`;
-  if (!(await existsAsync(file))) {
-    throw new ContentDoesNotExistError(`File doesn't exists: ${file}`);
-  }
-
-  const stats = await statAsync(file);
-  const totalSize = stats.size;
-  const mimeType = "application/octet-stream";
-  const getStream = (range?: Range) => {
-    if (!range) {
-      return fs.createReadStream(file);
-    }
-    const { start, end } = range;
-    logger.debug(`start: ${start}, end: ${end}`);
-
-    return fs.createReadStream(file, { start, end });
-  };
-
-  return {
-    fileName,
-    totalSize,
-    mimeType,
-    getStream
-  };
-};
-
-const logger = {
+export const logger = {
   debug(message: string, extra?: any) {
     if (extra) {
       console.log(`[debug]: ${message}`, extra);
