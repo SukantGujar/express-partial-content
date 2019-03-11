@@ -1,10 +1,6 @@
 import { Logger } from "./Logger";
 import { RangeParserError } from "./RangeParserError";
-
-export type Range = {
-  start: number;
-  end: number;
-};
+import { Range } from "./Range";
 
 const rangeRegEx = /bytes=([0-9]*)-([0-9]*)/;
 

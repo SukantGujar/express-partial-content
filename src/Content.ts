@@ -1,4 +1,4 @@
-import { Range } from "./parseRangeHeader";
+import { Range } from "./Range";
 import { Stream } from "stream";
 export type Content = {
   /**
