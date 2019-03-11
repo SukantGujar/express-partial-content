@@ -7,7 +7,8 @@
   "license": "MIT",
   "scripts": {
     "build:watch": "npx tsc -w",
-    "build:prod": "rimraf ./dist && cross-env NODE_ENV=production tsc -b"
+    "build:prod": "rimraf ./dist && cross-env NODE_ENV=production tsc -p ./tsconfig.production.json",
+    "run:examples:file": "node ./dist/examples/express-file-server/index.js"
   },
   "devDependencies": {
     "@types/express": "^4.16.1",
@@ -16,6 +17,9 @@
     "typescript": "^3.3.3333"
   },
   "peerDependencies": {
+    "express": "^4.16.4"
+  },
+  "dependencies": {
     "express": "^4.16.4"
   }
 }

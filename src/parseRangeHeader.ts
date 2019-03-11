@@ -1,3 +1,6 @@
+import { Logger } from "./Logger";
+import { RangeParserError } from "./RangeParserError";
+
 export type Range = {
   start: number;
   end: number;
@@ -5,19 +8,16 @@ export type Range = {
 
 const rangeRegEx = /bytes=([0-9]*)-([0-9]*)/;
 
-export class RangeParserError extends Error {
-  constructor(start: any, end: any) {
-    super(`Invalid start and end values: ${start}-${end}.`);
-  }
-}
-
-export function parseRangeHeader(range: string, totalSize: number): Range | null {
+export function parseRangeHeader(range: string, totalSize: number, logger: Logger): Range | null {
+  logger.debug("Un-parsed range is: ", range);
   // 1. If range is not specified or the file is empty, return null.
-  if (range === null || range.length === 0 || totalSize === 0) {
+  if (!range || range === null || range.length === 0 || totalSize === 0) {
     return null;
   }
 
-  const [startValue, endValue] = range.split(rangeRegEx);
+  const splitRange = range.split(rangeRegEx);
+  console.log("Parsed range is: ", JSON.stringify(splitRange));
+  const [, startValue, endValue] = splitRange;
   let start = Number.parseInt(startValue);
   let end = Number.parseInt(endValue);
 
@@ -32,26 +32,31 @@ export function parseRangeHeader(range: string, totalSize: number): Range | null
 
   // 3.1. If end is not provided, set end to the last byte (totalSize - 1).
   if (!Number.isNaN(start) && Number.isNaN(end)) {
+    logger.debug("End is not provided.");
+
     result.start = start;
     result.end = totalSize - 1;
-
-    return result;
   }
 
   // 3.2. If start is not provided, set it to the offset of last "end" bytes from the end of the file.
   //      And set end to the last byte.
   //      This way we return the last "end" bytes.
   if (Number.isNaN(start) && !Number.isNaN(end)) {
-    result.start = totalSize - end;
-    result.end = totalSize - 1;
+    logger.debug(`Start is not provided, "end" will be treated as last "end" bytes of the content.`);
 
-    return result;
+    result.start = Math.max(totalSize - end, 0);
+    result.end = totalSize - 1;
   }
 
   // 4. Handle invalid ranges.
-  if (start > end) {
+  if (start < 0 || start > end || end > totalSize) {
     throw new RangeParserError(start, end);
   }
 
+  logRange(logger, result);
   return result;
+}
+
+function logRange(logger: Logger, range: Range) {
+  logger.debug("Range is: ", JSON.stringify(range));
 }
