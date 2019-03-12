@@ -1,3 +1,5 @@
+![Travis CI Status](https://travis-ci.com/SukantGujar/express-partial-content.svg?branch=master)
+
 # About
 
 A HTTP 206 Partial Content handler to serve any readable stream partially in Express.
