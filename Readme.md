@@ -20,6 +20,7 @@ From the `express-file-server` example:
 
 1.  Implement a `ContentProvider` function which prepares and returns a `Content` object:
 
+        import { promisify } from "util";
         import fs from "fs";
         import { Range, ContentDoesNotExistError, ContentProvider } from "express-partial-content";
         import {logger} from "./logger";
