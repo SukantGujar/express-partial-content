@@ -12,7 +12,6 @@ export function parseRangeHeader(range: string, totalSize: number, logger: Logge
   }
 
   const splitRange = range.split(rangeRegEx);
-  console.log("Parsed range is: ", JSON.stringify(splitRange));
   const [, startValue, endValue] = splitRange;
   let start = Number.parseInt(startValue);
   let end = Number.parseInt(endValue);
