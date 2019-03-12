@@ -8,7 +8,7 @@
   "license": "MIT",
   "scripts": {
     "clean": "rimraf ./dist",
-    "test": "tsc && mocha dist/**/*.spec.js",
+    "test": "tsc && nyc --reporter=text mocha dist/**/*.spec.js",
     "build:watch": "npx tsc -w",
     "build:prod": "yarn clean && cross-env NODE_ENV=production tsc -p ./tsconfig.production.json",
     "push": "yarn test && yarn build:prod && yarn publish",
@@ -28,6 +28,7 @@
     "cross-env": "^5.2.0",
     "express": "^4.16.4",
     "mocha": "^6.0.2",
+    "nyc": "^13.3.0",
     "rimraf": "^2.6.3",
     "sinon": "^7.2.7",
     "typescript": "^3.3.3333"
