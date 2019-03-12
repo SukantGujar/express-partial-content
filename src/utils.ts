@@ -1,8 +1,8 @@
 import { Request, Response } from "express";
 import { Range } from "./Range";
-const getHeader = (name: string, req: Request) => req.headers[name];
+export const getHeader = (name: string, req: Request) => req.headers[name];
 export const getRangeHeader = getHeader.bind(null, "range");
-const setHeader = (name: string, value: string, res: Response) => res.setHeader(name, value);
+export const setHeader = (name: string, value: string, res: Response) => res.setHeader(name, value);
 export const setContentTypeHeader = setHeader.bind(null, "Content-Type");
 export const setContentLengthHeader = setHeader.bind(null, "Content-Length");
 export const setAcceptRangesHeader = setHeader.bind(null, "Accept-Ranges", "bytes");
