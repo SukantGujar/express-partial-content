@@ -75,9 +75,13 @@ describe("utils tests", () => {
   });
   describe("setContentRangeHeader tests", () => {
     it("sets Content-Range header with specified value", () => {
-      const range = { start: 10, end: 100 };
+      let range = { start: 10, end: 100 };
       const size = 1000;
-      const value = `bytes ${range ? `${range.start}-${range.end}` : "*"}/${size}`;
+      let value = `bytes ${range.start}-${range.end}/${size}`;
+      setContentRangeHeader(range, size, res);
+      expect((res.setHeader as SinonStub).calledOnceWith("Content-Range", value));
+      range = null;
+      value = `bytes */${size}`;
       setContentRangeHeader(range, size, res);
       expect((res.setHeader as SinonStub).calledOnceWith("Content-Range", value));
     });
