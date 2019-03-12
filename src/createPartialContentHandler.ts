@@ -13,7 +13,7 @@ import {
   setContentLengthHeader,
   setCacheControlHeaderNoCache
 } from "./utils";
-export function createPartialStreamHandler(contentProvider: ContentProvider, logger: Logger) {
+export function createPartialContentHandler(contentProvider: ContentProvider, logger: Logger) {
   return async function handler(req: Request, res: Response) {
     let content;
     try {

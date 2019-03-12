@@ -1,9 +1,9 @@
 import express from "express";
-import { createPartialStreamHandler } from "../../index";
+import { createPartialContentHandler } from "../../index";
 import { fileContentProvider } from "./fileContentProvider";
 import { logger } from "./logger";
 
-const handler = createPartialStreamHandler(fileContentProvider, logger);
+const handler = createPartialContentHandler(fileContentProvider, logger);
 
 const app = express();
 const port = 8080;

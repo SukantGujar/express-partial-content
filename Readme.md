@@ -56,12 +56,12 @@ From the `express-file-server` example:
           };
         };
 
-2.  In your express code, use `createPartialStreamHandler` factory method to generate an express handler for serving partial content for the route of your choice:
+2.  In your express code, use `createPartialContentHandler` factory method to generate an express handler for serving partial content for the route of your choice:
 
-        import {createPartialStreamHandler} from "express-partial-content";
+        import {createPartialContentHandler} from "express-partial-content";
         import {logger} from "./logger";
 
-        const handler = createPartialStreamHandler(fileContentProvider, logger);
+        const handler = createPartialContentHandler(fileContentProvider, logger);
 
         const app = express();
         const port = 8080;
@@ -79,9 +79,9 @@ From the `express-file-server` example:
 
 # Reference
 
-## createPartialStreamHandler function:
+## createPartialContentHandler function:
 
-The package exports `createPartialStreamHandler` factory method.
+This is a factory method which generates a partial content handler for express routes.
 
 ### Arguments:
 
@@ -90,11 +90,11 @@ The package exports `createPartialStreamHandler` factory method.
 
 ### Returns:
 
-- Express Route Handler: `createPartialStreamHandler` returns an express handler which can be mapped to an Express route to serve partial content.
+- Express Route Handler: `createPartialContentHandler` returns an express handler which can be mapped to an Express route to serve partial content.
 
 ## ContentProvider function:
 
-This function _needs to be implemented by you_. It's purpose is to fetch and return `Content` object containing necessary metadata and methods to stream the content partially. This method is invoked by the express handler (returned by `createPartialStreamHandler`) on each request.
+This function _needs to be implemented by you_. It's purpose is to fetch and return `Content` object containing necessary metadata and methods to stream the content partially. This method is invoked by the express handler (returned by `createPartialContentHandler`) on each request.
 
 ### Arguments:
 
