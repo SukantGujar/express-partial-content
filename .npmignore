@@ -1,0 +1,10 @@
+node_modules
+.gitignore
+.travis.yml
+yarn.lock
+.vscode
+tsconfig.*
+.prettierrc.json
+_config.yml
+src
+*.log

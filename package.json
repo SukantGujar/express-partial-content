@@ -9,13 +9,20 @@
   "scripts": {
     "build:watch": "npx tsc -w",
     "build:prod": "rimraf ./dist && cross-env NODE_ENV=production tsc -p ./tsconfig.production.json",
+    "push": "yarn build:prod && yarn publish",
     "run:examples:file": "node ./dist/examples/express-file-server/index.js"
   },
+  "keywords": [
+    "partial-content",
+    "206",
+    "stream"
+  ],
   "devDependencies": {
     "@types/express": "^4.16.1",
     "cross-env": "^5.2.0",
     "rimraf": "^2.6.3",
-    "typescript": "^3.3.3333"
+    "typescript": "^3.3.3333",
+    "express": "^4.16.4"
   },
   "peerDependencies": {
     "express": "^4.16.4"
