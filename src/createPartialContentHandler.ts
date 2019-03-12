@@ -21,7 +21,7 @@ export function createPartialContentHandler(contentProvider: ContentProvider, lo
     } catch (error) {
       logger.debug("ContentProvider threw exception: ", error);
       if (error instanceof ContentDoesNotExistError) {
-        return res.status(400).send(error.message);
+        return res.status(404).send(error.message);
       }
       return res.sendStatus(500);
     }
