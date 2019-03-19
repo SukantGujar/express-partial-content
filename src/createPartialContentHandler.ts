@@ -19,7 +19,7 @@ export function createPartialContentHandler(contentProvider: ContentProvider, lo
     try {
       content = await contentProvider(req);
     } catch (error) {
-      logger.debug("ContentProvider threw exception: ", error);
+      logger.debug("createPartialContentHandler: ContentProvider threw exception: ", error);
       if (error instanceof ContentDoesNotExistError) {
         return res.status(404).send(error.message);
       }
@@ -31,7 +31,7 @@ export function createPartialContentHandler(contentProvider: ContentProvider, lo
     try {
       range = parseRangeHeader(rangeHeader, totalSize, logger);
     } catch (error) {
-      logger.debug(`parseRangeHeader error: `, error);
+      logger.debug(`createPartialContentHandler: parseRangeHeader error: `, error);
       if (error instanceof RangeParserError) {
         setContentRangeHeader(null, totalSize, res);
         return res.status(416).send(`Invalid value for Range: ${rangeHeader}`);
@@ -43,7 +43,7 @@ export function createPartialContentHandler(contentProvider: ContentProvider, lo
     setAcceptRangesHeader(res);
     // If range is not specified, or the file is empty, return the full stream
     if (range === null) {
-      logger.debug("No range found, returning full content.");
+      logger.debug("createPartialContentHandler: No range found, returning full content.");
       setContentLengthHeader(totalSize, res);
       return getStream().pipe(res);
     }
@@ -52,7 +52,7 @@ export function createPartialContentHandler(contentProvider: ContentProvider, lo
     setContentLengthHeader(start === end ? 0 : end - start + 1, res);
     setCacheControlHeaderNoCache(res);
     // Return 206 Partial Content status
-    logger.debug("Returning partial content for range: ", JSON.stringify(range));
+    logger.debug("createPartialContentHandler: Returning partial content for range: ", JSON.stringify(range));
     res.status(206);
 
     return getStream(range).pipe(res);
