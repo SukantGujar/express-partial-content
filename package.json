@@ -12,7 +12,8 @@
     "build:watch": "npx tsc -w",
     "build:prod": "yarn clean && cross-env NODE_ENV=production tsc -p ./tsconfig.production.json",
     "push": "yarn test && yarn build:prod && yarn publish",
-    "run:examples:file": "node ./dist/examples/express-file-server/index.js"
+    "run:examples:file": "node ./dist/examples/express-file-server/index.js",
+    "run:examples:mongo": "node ./dist/examples/express-mongo-server/index.js"
   },
   "keywords": [
     "partial-content",
@@ -23,11 +24,13 @@
     "@types/chai": "^4.1.7",
     "@types/express": "^4.16.1",
     "@types/mocha": "^5.2.6",
+    "@types/mongodb": "^3.1.22",
     "@types/sinon": "^7.0.9",
     "chai": "^4.2.0",
     "cross-env": "^5.2.0",
     "express": "^4.16.4",
     "mocha": "^6.0.2",
+    "mongodb": "^3.1.13",
     "nyc": "^13.3.0",
     "rimraf": "^2.6.3",
     "sinon": "^7.2.7",

@@ -54,6 +54,7 @@ export function createPartialContentHandler(contentProvider: ContentProvider, lo
     // Return 206 Partial Content status
     logger.debug("Returning partial content for range: ", JSON.stringify(range));
     res.status(206);
-    getStream(range).pipe(res);
+
+    return getStream(range).pipe(res);
   };
 }
