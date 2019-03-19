@@ -8,8 +8,10 @@
   "license": "MIT",
   "scripts": {
     "clean": "rimraf ./dist",
+    "copy-assets": "copyfiles -E -u 1 src/examples/sample-files/* dist/",
     "test": "tsc && nyc --reporter=text mocha dist/**/*.spec.js",
     "build:watch": "npx tsc -w",
+    "build:dev": "npx tsc && yarn copy-assets",
     "build:prod": "yarn clean && cross-env NODE_ENV=production tsc -p ./tsconfig.production.json",
     "push": "yarn test && yarn build:prod && yarn publish",
     "run:examples:file": "node ./dist/examples/express-file-server/index.js",
@@ -27,6 +29,7 @@
     "@types/mongodb": "^3.1.22",
     "@types/sinon": "^7.0.9",
     "chai": "^4.2.0",
+    "copyfiles": "^2.1.0",
     "cross-env": "^5.2.0",
     "express": "^4.16.4",
     "mocha": "^6.0.2",

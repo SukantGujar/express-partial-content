@@ -7,7 +7,7 @@ import { logger } from "./logger";
 
 export const fileContentProvider: ContentProvider = async (req: Request) => {
   const fileName = req.params.name;
-  const file = `${__dirname}/files/${fileName}`;
+  const file = `${__dirname}/../sample-files/${fileName}`;
   if (!(await existsAsync(file))) {
     throw new ContentDoesNotExistError(`File doesn't exist: ${file}`);
   }

@@ -33,7 +33,7 @@ client.connect(error => {
 
     const fileName = "readme.txt";
 
-    const readStream = fs.createReadStream(path.join(__dirname, "files", fileName));
+    const readStream = fs.createReadStream(path.join(__dirname, "..", "sample-files", fileName));
 
     readStream.on("close", () => {
       console.log("readme.txt uploaded to gridfs.");
