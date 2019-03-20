@@ -77,7 +77,39 @@ From the `express-file-server` example:
 
 3.  Run your server and use a multi-part/multi-connection download utility like [aria2c](https://aria2.github.io/) to test it:
 
-        aria -x5 -k1M http://localhost:8080/files/file1.txt
+        aria -x5 -k1M http://localhost:8080/files/readme.txt
+
+# Examples
+
+There are two examples in the `src/examples` folder:
+
+1. `express-file-server`: Implements a file based `ContentProvider`.
+2. `express-mongo-server`: Implements a mongodb based `ContentProvider`.
+
+## Running the examples:
+
+1.  `express-file-server`: Run the following commands, the server will listen on http://localhost:8080/.
+
+        yarn build:dev
+        yarn copy-assets
+        yarn run:examples:file
+
+2.  `express-mongo-server`:
+
+    1.  Run your own Mongo instance first or create one in https://mlab.com.
+    2.  Setup the connection string in `MongoUrl` environment variable:
+
+            export MongoUrl=mongodb+srv://username:password@mongoserver/dbname?retryWrites=true
+
+    3.  Build and run the example, the server will listen on http://localhost:8080/.
+
+            yarn build:dev
+            yarn copy-assets
+            yarn run:examples:file
+
+## Connecting to the running server:
+
+Browse to `https://localhost:8080/files/readme.txt`
 
 # Reference
 
