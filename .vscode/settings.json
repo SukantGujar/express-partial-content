@@ -1,3 +1,5 @@
 {
-  "editor.formatOnSave": true
+  "editor.formatOnSave": true,
+  "cSpell.words": ["Gujar", "Sukant", "copyfiles", "sukantgujar"],
+  "eslint.validate": ["javascript", "typescript"]
 }

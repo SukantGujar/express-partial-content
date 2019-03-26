@@ -1,6 +1,6 @@
 import { Range } from "./Range";
 import { Stream } from "stream";
-export type Content = {
+export interface Content {
   /**
    * Returns a readable stream based on the provided range (optional).
    * @param {Range} range The start-end range of stream data.
