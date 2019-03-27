@@ -3,8 +3,9 @@
   "description": "A partial content handler implementation for any readable stream with Express. Based on this blog post: https://www.codeproject.com/Articles/813480/HTTP-Partial-Content-In-Node-js.",
   "version": "1.0.1",
   "main": "dist/index.js",
-  "repository": "ssh://git@github.com-sukantgujar/SukantGujar/express-partial-content",
-  "author": "sukantgujar <sukantgujar@yahoo.com>",
+  "repository": "https://github.com/SukantGujar/express-partial-content",
+  "author": "Sukant Gujar <sukantgujar@yahoo.com>",
+  "homepage": "https://sukantgujar.github.io/express-partial-content/",
   "license": "MIT",
   "scripts": {
     "clean": "rimraf ./dist",
@@ -17,10 +18,15 @@
     "run:examples:file": "node ./dist/examples/express-file-server/index.js",
     "run:examples:mongo": "node ./dist/examples/express-mongo-server/index.js"
   },
+  "bugs": {
+    "email": "sukantgujar@yahoo.com",
+    "url": "https://github.com/SukantGujar/express-partial-content/issues"
+  },
   "keywords": [
     "partial-content",
     "206",
-    "stream"
+    "stream",
+    "typescript"
   ],
   "devDependencies": {
     "@types/chai": "^4.1.7",
